@@ -2,24 +2,19 @@
 // and child processes will share the text file and justify that both
 // parent and child share the same file offset.
 
-#include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <sys/wait.h>
 
 int main() {
-    int file = open("test.txt", O_RDONLY);
-    char buf[20];
-
+    int fd = open("shared.txt", O_RDONLY);
+    char buf[11] = {0};
     if (fork() == 0) {
-        read(file, buf, 5);
-        buf[5] = '\0';
-        printf("Child read: %s\n", buf);
+        read(fd, buf, 10);
+        write(1, "Child: ", 7);
     } else {
-        wait(NULL);
-        read(file, buf, 5);
-        buf[5] = '\0';
-        printf("Parent read: %s\n", buf);
+        sleep(1);
+        read(fd, buf, 10);
+        write(1, "Parent: ", 8);
     }
-    return 0;
+    write(1, buf, 10);
 }
