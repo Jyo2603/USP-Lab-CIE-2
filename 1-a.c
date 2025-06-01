@@ -4,7 +4,7 @@ system call.
 #include <fcntl.h>
 #include <unistd.h>
 int main() {
-    int fd = open("f.txt", O_RDONLY);
+    int fd = open("test.txt", O_RDONLY);
     off_t pos = lseek(fd, 0, 2);
     char c;
     while (--pos >= 0) {
