@@ -1,4 +1,4 @@
-1b. Write a C program to create a child process and show how parent
+// 1b. Write a C program to create a child process and show how parent
 and child processes will share the text file and justify that both
 parent and child share the same file offset.
 
