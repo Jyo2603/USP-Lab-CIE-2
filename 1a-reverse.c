@@ -1,7 +1,7 @@
 // 1a. Write a C program to display the file content in reverse order using lseek
 // system call.
 
-include <fcntl.h>
+#include <fcntl.h>
 #include <unistd.h>
 
 int main() {
